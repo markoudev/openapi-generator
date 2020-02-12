@@ -34,11 +34,13 @@ public class TypeScriptFetchClientCodegen extends AbstractTypeScriptClientCodege
     public static final String NPM_REPOSITORY = "npmRepository";
     public static final String WITH_INTERFACES = "withInterfaces";
     public static final String USE_SINGLE_REQUEST_PARAMETER = "useSingleRequestParameter";
+    public static final String MULTIPLE_QUERY_PARAMETERS_FOR_COLLECTIONS = "useMultipleQueryParametersForCollections";
     public static final String PREFIX_PARAMETER_INTERFACES = "prefixParameterInterfaces";
     public static final String TYPESCRIPT_THREE_PLUS = "typescriptThreePlus";
 
     protected String npmRepository = null;
     private boolean useSingleRequestParameter = true;
+    private boolean useMultipleQueryParametersForCollections = false;
     private boolean prefixParameterInterfaces = false;
     protected boolean addedApiIndex = false;
     protected boolean addedModelIndex = false;
@@ -120,6 +122,11 @@ public class TypeScriptFetchClientCodegen extends AbstractTypeScriptClientCodege
             this.setUseSingleRequestParameter(convertPropertyToBoolean(USE_SINGLE_REQUEST_PARAMETER));
         }
         writePropertyBack(USE_SINGLE_REQUEST_PARAMETER, getUseSingleRequestParameter());
+
+        if (additionalProperties.containsKey(MULTIPLE_QUERY_PARAMETERS_FOR_COLLECTIONS)) {
+            this.setUseMultipleQueryParametersForCollections(convertPropertyToBoolean(MULTIPLE_QUERY_PARAMETERS_FOR_COLLECTIONS));
+        }
+        writePropertyBack(MULTIPLE_QUERY_PARAMETERS_FOR_COLLECTIONS, getUseMultipleQueryParametersForCollections());
 
         if (additionalProperties.containsKey(PREFIX_PARAMETER_INTERFACES)) {
             this.setPrefixParameterInterfaces(convertPropertyToBoolean(PREFIX_PARAMETER_INTERFACES));
@@ -321,6 +328,14 @@ public class TypeScriptFetchClientCodegen extends AbstractTypeScriptClientCodege
 
     private void setUseSingleRequestParameter(boolean useSingleRequestParameter) {
         this.useSingleRequestParameter = useSingleRequestParameter;
+    }
+
+    private boolean getUseMultipleQueryParametersForCollections() {
+        return useMultipleQueryParametersForCollections;
+    }
+
+    private void setUseMultipleQueryParametersForCollections(boolean useMultipleQueryParametersForCollections) {
+        this.useMultipleQueryParametersForCollections = useMultipleQueryParametersForCollections;
     }
 
     private boolean getPrefixParameterInterfaces() {

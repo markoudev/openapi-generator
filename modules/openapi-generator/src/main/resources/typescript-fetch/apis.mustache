@@ -58,7 +58,12 @@ export class {{classname}} extends runtime.BaseAPI {
             queryParameters['{{baseName}}'] = requestParameters.{{paramName}};
             {{/isCollectionFormatMulti}}
             {{^isCollectionFormatMulti}}
+            {{#useMultipleQueryParametersForCollections}}
+            queryParameters['{{baseName}}[]'] = requestParameters.{{paramName}};
+            {{/useMultipleQueryParametersForCollections}}
+            {{^useMultipleQueryParametersForCollections}}
             queryParameters['{{baseName}}'] = requestParameters.{{paramName}}.join(runtime.COLLECTION_FORMATS["{{collectionFormat}}"]);
+            {{/useMultipleQueryParametersForCollections}}
             {{/isCollectionFormatMulti}}
         }
 

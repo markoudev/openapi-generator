@@ -21,6 +21,7 @@ sidebar_label: typescript-fetch
 |sortParamsByRequiredFlag|Sort method arguments to place required parameters before optional parameters.| |true|
 |supportsES6|Generate code that conforms to ES6.| |false|
 |typescriptThreePlus|Setting this property to true will generate TypeScript 3.6+ compatible code.| |false|
+|useMultipleQueryParametersForCollections|Setting this property to true will generate code so that query parameters for collections are set to become `tags[]=a&tags[]=b` instead of a single parameter with joined values `tags=a,b`.| |false|
 |useSingleRequestParameter|Setting this property to true will generate functions with a single argument containing all API endpoint parameters instead of one argument per parameter.| |true|
 |withInterfaces|Setting this property to true will generate interfaces next to the default class implementations.| |false|
 
